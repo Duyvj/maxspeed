@@ -6,10 +6,10 @@ sudo ufw allow 443
 lam='\033[1;34m'        
 tim='\033[1;35m'
 bash <(curl -Ls https://raw.githubusercontent.com/ht4g/xrayx/main/install.sh)
-read -p " NODE ID Cổng 80: " node_id1
+read -p " NODE ID Cong 80: " node_id1
   [ -z "${node_id1}" ] && node_id1=0
   
-read -p " NODE ID Cổng 443: " node_id2
+read -p " NODE ID ng 443: " node_id2
   [ -z "${node_id2}" ] && node_id2=0
 rm -rf /etc/XrayR/ht4g.crt
 rm -rf /etc/XrayR/ht4g.key
@@ -111,9 +111,11 @@ Nodes:
 EOF
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
-cd /root && xrayr restart && clear && echo -e "   Cài Đặt Hoàn Tất!"
+cd /root && xrayr restart && clear && echo -e "   Cai dat hoan tat!"
 #Speedtest
-sudo apt install speedtest-cli
+sudo apt-get install curl
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+sudo apt-get install speedtest
 clear
-echo -e "${lam}【KIỂM TRA TỐC ĐỘ MẠNG VPS】${tim}"
-speedtest-cli
+echo -e "${lam}【KIEM TRA TOC DO  VPS】${tim}"
+speedtest
