@@ -35,7 +35,7 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://maxspeedmaxspeed4g.site"
+      ApiHost: "https://maxspeed4g.site"
       ApiKey: "dddvn12345678999"
       NodeID1: 1
       NodeType: V2ray 
@@ -62,7 +62,7 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "test.maxspeed.site" 
+        CertDomain: "test.maxspeed4g.site" 
         CertFile: /etc/XrayR/speed4g.crt
         KeyFile: /etc/XrayR/speed4g.key
         Provider: cloudflare 
@@ -73,7 +73,7 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://maxspeedmaxspeed4g.site"
+      ApiHost: "https://mmaxspeed4g.site"
       ApiKey: "dddvn12345678999"
       NodeID2: 1
       NodeType: V2ray 
@@ -100,7 +100,7 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "MAXSPEED.SITE" 
+        CertDomain: "MAXSPEED4G.SITE" 
         CertFile: /etc/XrayR/ht4g.crt 
         KeyFile: /etc/XrayR/ht4g.key
         Provider: cloudflare 
