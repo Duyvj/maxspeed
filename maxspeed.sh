@@ -73,7 +73,7 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://mmaxspeed4g.site"
+      ApiHost: "https://maxspeed4g.site"
       ApiKey: "dddvn12345678999"
       NodeID2: 1
       NodeType: V2ray 
