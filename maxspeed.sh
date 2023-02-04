@@ -1,4 +1,5 @@
 apt-get update -y
+sudo apt update
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw allow 80
@@ -6,10 +7,16 @@ sudo ufw allow 443
 lam='\033[1;34m'        
 tim='\033[1;35m'
 bash <(curl -Ls https://raw.githubusercontent.com/ht4g/xrayx/main/install.sh)
-read -p " NODE ID Cong 80: " node_id1
+read -p " Địa chỉ web(VD: https://example.com): " api_host
+  [ -z "${api_host}" ] && api_host=https://example.com
+
+read -p " Khóa giao tiếp(VD: example_123): " api_key
+  [ -z "${api_key}" ] && api_key=example_123  
+
+read -p " NODE ID Cổng 80: " node_id1
   [ -z "${node_id1}" ] && node_id1=0
   
-read -p " NODE ID ng 443: " node_id2
+read -p " NODE ID Cổng 443: " node_id2
   [ -z "${node_id2}" ] && node_id2=0
 rm -rf /etc/XrayR/ht4g.crt
 rm -rf /etc/XrayR/ht4g.key
@@ -35,8 +42,8 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://maxspeed4g.site"
-      ApiKey: "dddvn12345678999"
+      ApiHost: "https://example.com"
+      ApiKey: "example_example"
       NodeID1: 1
       NodeType: V2ray 
       Timeout: 30 
@@ -62,9 +69,9 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "test.maxspeed4g.site" 
-        CertFile: /etc/XrayR/speed4g.crt
-        KeyFile: /etc/XrayR/speed4g.key
+        CertDomain: "admin.ht4gvpn.pw" 
+        CertFile: /etc/XrayR/ht4gvpn.crt
+        KeyFile: /etc/XrayR/ht4gvpn.key
         Provider: cloudflare 
         Email: lole7176@gmail.
         DNSEnv: 
@@ -73,8 +80,8 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://maxspeed4g.site"
-      ApiKey: "dddvn12345678999"
+      ApiHost: "https://example.com"
+      ApiKey: "example_example"
       NodeID2: 1
       NodeType: V2ray 
       Timeout: 30 
@@ -100,7 +107,7 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "MAXSPEED4G.SITE" 
+        CertDomain: "HT4GVPN.PW" 
         CertFile: /etc/XrayR/ht4g.crt 
         KeyFile: /etc/XrayR/ht4g.key
         Provider: cloudflare 
@@ -109,13 +116,15 @@ Nodes:
           CLOUDFLARE_EMAIL: 
           CLOUDFLARE_API_KEY: 
 EOF
+sed -i "s|ApiHost:.*|ApiHost: ${api_host}|" ./config.yml
+sed -i "s|ApiKey:.*|ApiKey: ${api_key}|" ./config.yml
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
-cd /root && xrayr restart && clear && echo -e "   Cai dat hoan tat!"
+cd /root && xrayr restart && clear && echo -e "   Cài Đặt Hoàn Tất!"
 #Speedtest
 sudo apt-get install curl
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
 sudo apt-get install speedtest
 clear
-echo -e "${lam}【KIEM TRA TOC DO  VPS】${tim}"
-speedtest
+echo -e "${lam}【KIỂM TRA TỐC ĐỘ MẠNG VPS】${tim}"
+speedtest-cli
