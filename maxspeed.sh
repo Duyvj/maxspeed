@@ -83,7 +83,7 @@ Nodes:
       ApiHost: "https://example.com"
       ApiKey: "example_example"
       NodeID2: 1
-      NodeType: 
+      NodeType: Trojan
       Timeout: 30 
       EnableVless: false 
       EnableXTLS: false 
