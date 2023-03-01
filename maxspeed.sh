@@ -69,11 +69,11 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "admin.ht4gvpn.pw" 
-        CertFile: /etc/XrayR/ht4gvpn.crt
-        KeyFile: /etc/XrayR/ht4gvpn.key
+        CertDomain: "admin.zenpn.me" 
+        CertFile: /etc/XrayR/zenpn.me.crt
+        KeyFile: /etc/XrayR/zenpn.me.key
         Provider: cloudflare 
-        Email: lole7176@gmail.
+        Email: zenpn.me@gmail.
         DNSEnv: 
           CLOUDFLARE_EMAIL:
           CLOUDFLARE_API_KEY:
@@ -107,11 +107,11 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "HT4GVPN.PW" 
-        CertFile: /etc/XrayR/ht4g.crt 
-        KeyFile: /etc/XrayR/ht4g.key
+        CertDomain: "ZENPN.ME" 
+        CertFile: /etc/XrayR/zenpn.crt 
+        KeyFile: /etc/XrayR/.key
         Provider: cloudflare 
-        Email: lole7176@gmail.com
+        Email: zenpn.me@gmail.com
         DNSEnv: 
           CLOUDFLARE_EMAIL: 
           CLOUDFLARE_API_KEY: 
@@ -122,9 +122,9 @@ sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
 cd /root && xrayr restart && clear && echo -e "   Cài Đặt Hoàn Tất!"
 #Speedtest
-sudo apt-get install curl
+sudo apt-get install curl -y
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
 sudo apt-get install speedtest
 clear
 echo -e "${lam}【KIỂM TRA TỐC ĐỘ MẠNG VPS】${tim}"
-speedtest-cli
+speedtest -y
