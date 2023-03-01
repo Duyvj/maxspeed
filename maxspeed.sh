@@ -73,7 +73,7 @@ Nodes:
         CertFile: /etc/XrayR/zenpn.me.crt
         KeyFile: /etc/XrayR/zenpn.me.key
         Provider: cloudflare 
-        Email: zenpn.me@gmail.
+        Email: lole7176@gmail.
         DNSEnv: 
           CLOUDFLARE_EMAIL:
           CLOUDFLARE_API_KEY:
@@ -83,7 +83,7 @@ Nodes:
       ApiHost: "https://example.com"
       ApiKey: "example_example"
       NodeID2: 1
-      NodeType: Trojan
+      NodeType: Trojan 
       Timeout: 30 
       EnableVless: false 
       EnableXTLS: false 
@@ -111,7 +111,7 @@ Nodes:
         CertFile: /etc/XrayR/zenpn.crt 
         KeyFile: /etc/XrayR/zenpn.key
         Provider: cloudflare 
-        Email: zenpn.me@gmail.com
+        Email: lole7176@gmail.com
         DNSEnv: 
           CLOUDFLARE_EMAIL: 
           CLOUDFLARE_API_KEY: 
@@ -121,6 +121,7 @@ sed -i "s|ApiKey:.*|ApiKey: ${api_key}|" ./config.yml
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
 cd /root && xrayr restart && clear && echo -e "   Cài Đặt Hoàn Tất!"
+
 #Speedtest
 sudo apt-get install curl -y
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
