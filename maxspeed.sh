@@ -69,9 +69,9 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "admin.zenpn.me" 
-        CertFile: /etc/XrayR/zenpn.me.crt
-        KeyFile: /etc/XrayR/zenpn.me.key
+        CertDomain: "admin.ht4gvpn.pw" 
+        CertFile: /etc/XrayR/ht4gvpn.crt
+        KeyFile: /etc/XrayR/ht4gvpn.key
         Provider: cloudflare 
         Email: lole7176@gmail.
         DNSEnv: 
@@ -107,9 +107,9 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "ZENPN.ME" 
-        CertFile: /etc/XrayR/zenpn.crt 
-        KeyFile: /etc/XrayR/zenpn.key
+        CertDomain: "HT4GVPN.PW" 
+        CertFile: /etc/XrayR/ht4g.crt 
+        KeyFile: /etc/XrayR/ht4g.key
         Provider: cloudflare 
         Email: lole7176@gmail.com
         DNSEnv: 
