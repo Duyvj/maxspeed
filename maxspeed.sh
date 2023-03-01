@@ -109,7 +109,7 @@ Nodes:
         CertMode: file 
         CertDomain: "ZENPN.ME" 
         CertFile: /etc/XrayR/zenpn.crt 
-        KeyFile: /etc/XrayR/.key
+        KeyFile: /etc/XrayR/zenpn.key
         Provider: cloudflare 
         Email: zenpn.me@gmail.com
         DNSEnv: 
