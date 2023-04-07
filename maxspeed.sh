@@ -24,103 +24,102 @@ openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes -out /etc/XrayR/ht4g
 cd /etc/XrayR
 cat >config.yml <<EOF
 Log:
-  Level: none # Log level: none, error, warning, info, debug 
+  Log:
+  Level: none 
   AccessPath: # /etc/XrayR/access.Log
   ErrorPath: # /etc/XrayR/error.log
-DnsConfigPath: # /etc/XrayR/dns.json Path to dns config
-ConnetionConfig:
-  Handshake: 4 # Handshake time limit, Second
-  ConnIdle: 10 # Connection idle time limit, Second
-  UplinkOnly: 2 # Time limit when the connection downstream is closed, Second
-  DownlinkOnly: 4 # Time limit when the connection is closed after the uplink is closed, Second
-  BufferSize: 64 # The internal cache size of each connection, kB 
+DnsConfigPath: # /etc/XrayR/dns.json
+InboundConfigPath: # /etc/XrayR/custom_inbound.json
+RouteConfigPath: # /etc/XrayR/route.json
+OutboundConfigPath: # /etc/XrayR/custom_outbound.json
+ConnectionConfig:
+  Handshake: 4 
+  ConnIdle: 30 
+  UplinkOnly: 2 
+  DownlinkOnly: 4 
+  BufferSize: 64 
 Nodes:
   -
-    PanelType: "V2board" # Panel type: SSpanel, V2board, PMpanel
+    PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "http://zenpn.me"
-      ApiKey: "dyudz123456789000"
-      NodeID1: 41
-      NodeType: V2ray # Node type: V2ray, Shadowsocks, Trojan
-      Timeout: 30 # Timeout for the api request
-      EnableVless: false # Enable Vless for V2ray Type
-      EnableXTLS: false # Enable XTLS for V2ray and Trojan
-      SpeedLimit: 0 # Mbps, Local settings will replace remote settings, 0 means disable
-      DeviceLimit: 0 # Local settings will replace remote settings, 0 means disable
-      RuleListPath: # /etc/XrayR/rulelist Path to local rulelist file
+      ApiHost: "https://example.com"
+      ApiKey: "example_example"
+      NodeID1: 1
+      NodeType: V2ray 
+      Timeout: 30 
+      EnableVless: false 
+      EnableXTLS: false 
+      SpeedLimit: 0
+      DeviceLimit: 0
+      RuleListPath: # /etc/XrayR/rulelist
     ControllerConfig:
-      ListenIP: 0.0.0.0 # IP address you want to listen
-      SendIP: 0.0.0.0 # IP address you want to send pacakage
-      UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
-      EnableDNS: false # Use custom DNS config, Please ensure that you set the dns.json well
-      DNSType: AsIs # AsIs, UseIP, UseIPv4, UseIPv6, DNS strategy
-      EnableProxyProtocol: false # Only works for WebSocket and TCP
-      EnableFallback: false # Only support for Trojan and Vless
-      FallBackConfigs:  # Support multiple fallbacks
+      DisableSniffing: True
+      ListenIP: 0.0.0.0 
+      SendIP: 0.0.0.0 
+      UpdatePeriodic: 60 
+      EnableDNS: false 
+      DNSType: AsIs 
+      EnableProxyProtocol: false 
+      EnableFallback: false 
+      FallBackConfigs:  
         -
-          SNI: # TLS SNI(Server Name Indication), Empty for any
-          Path: # HTTP PATH, Empty for any
-          Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/fallback/ for details.
-          ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for dsable
+          SNI: 
+          Path: 
+          Dest: 80 
+          ProxyProtocolVer: 0 
       CertConfig:
-        CertMode: dns # Option about how to get certificate: none, file, http, dns. Choose "none" will forcedly disable the tls config.
-        CertDomain: "node1.test.com" # Domain to cert
-        CertFile: /etc/XrayR/cert/node1.test.com.cert # Provided if the CertMode is file
-        KeyFile: /etc/XrayR/cert/node1.test.com.key
-        Provider: alidns # DNS cert provider, Get the full support list here: https://go-acme.github.io/lego/dns/
-        Email: test@me.com
-        DNSEnv: # DNS ENV option used by DNS provider
-          ALICLOUD_ACCESS_KEY: aaa
-          ALICLOUD_SECRET_KEY: bbb
-
+        CertMode: file 
+        CertDomain: "admin.ht4gvpn.pw" 
+        CertFile: /etc/XrayR/ht4gvpn.crt
+        KeyFile: /etc/XrayR/ht4gvpn.key
+        Provider: cloudflare 
+        Email: lole7176@gmail.
+        DNSEnv: 
+          CLOUDFLARE_EMAIL:
+          CLOUDFLARE_API_KEY:
   -
-    PanelType: "V2board" # Panel type: SSpanel, V2board, PMpanel
+    PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "http://zenpn.me"
-      ApiKey: "dyudz123456789000"
-      NodeID2: 41
-      NodeType: Trojan # Node type: V2ray, Shadowsocks, Trojan
-      Timeout: 30 # Timeout for the api request
-      EnableVless: false # Enable Vless for V2ray Type
-      EnableXTLS: false # Enable XTLS for V2ray and Trojan
-      SpeedLimit: 0 # Mbps, Local settings will replace remote settings, 0 means disable
-      DeviceLimit: 0 # Local settings will replace remote settings, 0 means disable
-      RuleListPath: # /etc/XrayR/rulelist Path to local rulelist file
+      ApiHost: "https://example.com"
+      ApiKey: "example_example"
+      NodeID2: 1
+      NodeType: Trojan 
+      Timeout: 30 
+      EnableVless: false 
+      EnableXTLS: false 
+      SpeedLimit: 0
+      DeviceLimit: 0
+      RuleListPath: # /etc/XrayR/rulelist
     ControllerConfig:
-      ListenIP: 0.0.0.0 # IP address you want to listen
-      SendIP: 0.0.0.0 # IP address you want to send pacakage
-      UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
-      EnableDNS: false # Use custom DNS config, Please ensure that you set the dns.json well
-      DNSType: AsIs # AsIs, UseIP, UseIPv4, UseIPv6, DNS strategy
-      EnableProxyProtocol: false # Only works for WebSocket and TCP
-      EnableFallback: false # Only support for Trojan and Vless
-      FallBackConfigs:  # Support multiple fallbacks
+      DisableSniffing: True
+      ListenIP: 0.0.0.0 
+      SendIP: 0.0.0.0 
+      UpdatePeriodic: 60 
+      EnableDNS: false 
+      DNSType: AsIs 
+      EnableProxyProtocol: false 
+      EnableFallback: false 
+      FallBackConfigs:  
         -
-          SNI: # TLS SNI(Server Name Indication), Empty for any
-          Path: # HTTP PATH, Empty for any
-          Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/fallback/ for details.
-          ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for dsable
+          SNI: 
+          Path: 
+          Dest: 80 
+          ProxyProtocolVer: 0 
       CertConfig:
-        CertMode: dns # Option about how to get certificate: none, file, http, dns. Choose "none" will forcedly disable the tls config.
-        CertDomain: "node1.test.com" # Domain to cert
-        CertFile: /etc/XrayR/cert/node1.test.com.cert # Provided if the CertMode is file
-        KeyFile: /etc/XrayR/cert/node1.test.com.key
-        Provider: alidns # DNS cert provider, Get the full support list here: https://go-acme.github.io/lego/dns/
-        Email: test@me.com
-        DNSEnv: # DNS ENV option used by DNS provider
-          ALICLOUD_ACCESS_KEY: aaa
-          ALICLOUD_SECRET_KEY: bbb
+        CertMode: file 
+        CertDomain: "HT4GVPN.PW" 
+        CertFile: /etc/XrayR/ht4g.crt 
+        KeyFile: /etc/XrayR/ht4g.key
+        Provider: cloudflare 
+        Email: lole7176@gmail.com
+        DNSEnv: 
+          CLOUDFLARE_EMAIL: 
+          CLOUDFLARE_API_KEY: 
 EOF
 sed -i "s|ApiHost:.*|ApiHost: ${api_host}|" ./config.yml
 sed -i "s|ApiKey:.*|ApiKey: ${api_key}|" ./config.yml
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
-cd /root && xrayr restart && echo -e "   Cài Đặt Hoàn Tất!"
+cd /root && xrayr restart  && echo -e "   Cài Đặt Hoàn Tất!"
 
-#Speedtest
-sudo apt-get install curl -y
-curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-sudo apt-get install speedtest
-clear
-echo -e "${lam}【KIỂM TRA TỐC ĐỘ MẠNG VPS】${tim}"
-speedtest -y
+
