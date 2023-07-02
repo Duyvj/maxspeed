@@ -7,11 +7,6 @@ sudo ufw allow 443
 lam='\033[1;34m'        
 tim='\033[1;35m'
 bash <(curl -Ls raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
-read -p " Địa chỉ web(VD: https://zenpn.com): " api_host
-  [ -z "${api_host}" ] && api_host=https://example.com
-
-read -p " Khóa giao tiếp(VD: example_123): " api_key
-  [ -z "${api_key}" ] && api_key=example_123  
 
 read -p " NODE ID Cổng 80: " node_id1
   [ -z "${node_id1}" ] && node_id1=0
@@ -42,8 +37,8 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://example.com"
-      ApiKey: "example_example"
+      ApiHost: "https://khoaapi.zenpn.com"
+      ApiKey: "dyudz123456789000"
       NodeID1: 1
       NodeType: V2ray 
       Timeout: 30 
@@ -80,8 +75,8 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://example.com"
-      ApiKey: "example_example"
+      ApiHost: "https://khoaapi.zenpn.com"
+      ApiKey: "dyudz123456789000"
       NodeID2: 1
       NodeType: V2ray 
       Timeout: 30 
@@ -120,4 +115,4 @@ sed -i "s|ApiHost:.*|ApiHost: ${api_host}|" ./config.yml
 sed -i "s|ApiKey:.*|ApiKey: ${api_key}|" ./config.yml
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
-cd /root && xrayr restart && echo -e "   Cài Đặt Hoàn Tất!"
+cd /root && xrayr restart 
