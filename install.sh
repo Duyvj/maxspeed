@@ -6,8 +6,12 @@ sudo ufw allow 80
 sudo ufw allow 443
 lam='\033[1;34m'        
 tim='\033[1;35m'
-bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/ht4g/xrayx/main/install.sh)
+#read -p " Địa chỉ web(VD: https://example.com): " api_host
+  [ -z "https://khoaapi.zenpn.com" ] && api_host=https://example.com
 
+#read -p " Khóa giao tiếp(VD: example_123): " api_key
+  [ -z "dyudz123456789000" ] && api_key=example_123  
 
 read -p " NODE ID Cổng 80: " node_id1
   [ -z "${node_id1}" ] && node_id1=0
@@ -38,8 +42,8 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://khoaapi.zenpn.com"
-      ApiKey: "dyudz123456789000"
+      ApiHost: "https://example.com"
+      ApiKey: "example_example"
       NodeID1: 1
       NodeType: V2ray 
       Timeout: 30 
@@ -76,8 +80,8 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://khoaapi.zenpn.com"
-      ApiKey: "dyudz123456789000"
+      ApiHost: "https://example.com"
+      ApiKey: "example_example"
       NodeID2: 1
       NodeType: V2ray 
       Timeout: 30 
