@@ -6,16 +6,17 @@ sudo ufw allow 80
 sudo ufw allow 443
 lam='\033[1;34m'        
 tim='\033[1;35m'
-bash <(curl -Ls raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+
 
 read -p " NODE ID Cổng 80: " node_id1
   [ -z "${node_id1}" ] && node_id1=0
   
 read -p " NODE ID Cổng 443: " node_id2
   [ -z "${node_id2}" ] && node_id2=0
-rm -rf /etc/XrayR/zen.crt
-rm -rf /etc/XrayR/zen.key
-openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes -out /etc/XrayR/zen.crt -keyout /etc/XrayR/zen.key -subj "/C=JP/ST=Tokyo/L=Chiyoda-ku/O=Google Trust Services LLC/CN=google.com"
+rm -rf /etc/XrayR/ht4g.crt
+rm -rf /etc/XrayR/ht4g.key
+openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes -out /etc/XrayR/ht4g.crt -keyout /etc/XrayR/ht4g.key -subj "/C=JP/ST=Tokyo/L=Chiyoda-ku/O=Google Trust Services LLC/CN=google.com"
 cd /etc/XrayR
 cat >config.yml <<EOF
 Log:
@@ -64,11 +65,11 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "admin.zenpn.com" 
-        CertFile: /etc/XrayR/zenpn.crt
-        KeyFile: /etc/XrayR/zenpn.key
+        CertDomain: "admin.ht4gvpn.pw" 
+        CertFile: /etc/XrayR/ht4gvpn.crt
+        KeyFile: /etc/XrayR/ht4gvpn.key
         Provider: cloudflare 
-        Email: duyta780@gmail.
+        Email: lole7176@gmail.
         DNSEnv: 
           CLOUDFLARE_EMAIL:
           CLOUDFLARE_API_KEY:
@@ -102,11 +103,11 @@ Nodes:
           ProxyProtocolVer: 0 
       CertConfig:
         CertMode: file 
-        CertDomain: "ZENPN.COM" 
-        CertFile: /etc/XrayR/zen.crt 
-        KeyFile: /etc/XrayR/zen.key
+        CertDomain: "HT4GVPN.PW" 
+        CertFile: /etc/XrayR/ht4g.crt 
+        KeyFile: /etc/XrayR/ht4g.key
         Provider: cloudflare 
-        Email: duyta780@gmail.com
+        Email: lole7176@gmail.com
         DNSEnv: 
           CLOUDFLARE_EMAIL: 
           CLOUDFLARE_API_KEY: 
@@ -115,4 +116,4 @@ sed -i "s|ApiHost:.*|ApiHost: ${api_host}|" ./config.yml
 sed -i "s|ApiKey:.*|ApiKey: ${api_key}|" ./config.yml
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
-cd /root && xrayr restart 
+cd /root && xrayr restart
