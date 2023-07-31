@@ -10,11 +10,7 @@ sudo ufw allow 443
 lam='\033[1;34m'        
 tim='\033[1;35m'
 bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
-read -p " Địa chỉ web(VD: https://example.com): " api_host
-  [ -z "${api_host}" ] && api_host=https://example.com
 
-read -p " Khóa giao tiếp(VD: example_123): " api_key
-  [ -z "${api_key}" ] && api_key=example_123  
 
 read -p " NODE ID Cổng 80: " node_id1
   [ -z "${node_id1}" ] && node_id1=0
@@ -37,7 +33,7 @@ RouteConfigPath: # /etc/XrayR/route.json
 OutboundConfigPath: # /etc/XrayR/custom_outbound.json
 ConnectionConfig:
   Handshake: 4 
-  ConnIdle: 30 
+  ConnIdle: 86400 
   UplinkOnly: 2 
   DownlinkOnly: 4 
   BufferSize: 64 
@@ -45,8 +41,8 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://example.com"
-      ApiKey: "example_example"
+      ApiHost: "https://nodezenpn.io.vn"
+      ApiKey: "dyudz123456789000"
       NodeID1: 1
       NodeType: V2ray 
       Timeout: 30 
@@ -64,7 +60,19 @@ Nodes:
       DNSType: AsIs 
       EnableProxyProtocol: false 
       EnableFallback: false 
-      FallBackConfigs:  
+      FallBackConfigs:
+      AutoSpeedLimitConfig:
+        Limit: 0
+        WarnTimes: 0
+        LimitSpeed: 0
+        LimitDuration: 0
+      GlobalDeviceLimitConfig:
+        Enable: false
+        RedisAddr: 127.0.0.1:6379
+        RedisPassword: YOUR PASSWORD
+        RedisDB: 0 # Redis DB
+        Timeout: 5
+        Expiry: 60
         -
           SNI: 
           Path: 
@@ -83,8 +91,8 @@ Nodes:
   -
     PanelType: "V2board" 
     ApiConfig:
-      ApiHost: "https://example.com"
-      ApiKey: "example_example"
+      ApiHost: "https://nodezenpn.io.vn"
+      ApiKey: "dyudz123456789000"
       NodeID2: 1
       NodeType: Trojan 
       Timeout: 30 
@@ -103,6 +111,18 @@ Nodes:
       EnableProxyProtocol: false 
       EnableFallback: false 
       FallBackConfigs:  
+      AutoSpeedLimitConfig:
+        Limit: 0
+        WarnTimes: 0
+        LimitSpeed: 0
+        LimitDuration: 0
+      GlobalDeviceLimitConfig:
+        Enable: false
+        RedisAddr: 127.0.0.1:6379
+        RedisPassword: YOUR PASSWORD
+        RedisDB: 0 # Redis DB
+        Timeout: 5
+        Expiry: 60
         -
           SNI: 
           Path: 
@@ -119,8 +139,6 @@ Nodes:
           CLOUDFLARE_EMAIL: 
           CLOUDFLARE_API_KEY: 
 EOF
-sed -i "s|ApiHost:.*|ApiHost: ${api_host}|" ./config.yml
-sed -i "s|ApiKey:.*|ApiKey: ${api_key}|" ./config.yml
 sed -i "s|NodeID1:.*|NodeID: ${node_id1}|" ./config.yml
 sed -i "s|NodeID2:.*|NodeID: ${node_id2}|" ./config.yml
 cd /root && xrayr restart 
