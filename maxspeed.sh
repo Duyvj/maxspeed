@@ -61,18 +61,6 @@ Nodes:
       EnableProxyProtocol: false 
       EnableFallback: false 
       FallBackConfigs:
-      AutoSpeedLimitConfig:
-        Limit: 0
-        WarnTimes: 0
-        LimitSpeed: 0
-        LimitDuration: 0
-      GlobalDeviceLimitConfig:
-        Enable: false
-        RedisAddr: 127.0.0.1:6379
-        RedisPassword: YOUR PASSWORD
-        RedisDB: 0 # Redis DB
-        Timeout: 5
-        Expiry: 60
         -
           SNI: 
           Path: 
@@ -111,18 +99,6 @@ Nodes:
       EnableProxyProtocol: false 
       EnableFallback: false 
       FallBackConfigs:  
-      AutoSpeedLimitConfig:
-        Limit: 0
-        WarnTimes: 0
-        LimitSpeed: 0
-        LimitDuration: 0
-      GlobalDeviceLimitConfig:
-        Enable: false
-        RedisAddr: 127.0.0.1:6379
-        RedisPassword: YOUR PASSWORD
-        RedisDB: 0 # Redis DB
-        Timeout: 5
-        Expiry: 60
         -
           SNI: 
           Path: 
